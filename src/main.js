@@ -16,6 +16,9 @@ Vue.prototype.$axios = axios
 import pagination from '@/components/Pagination/index.vue'
 Vue.component('pagination', pagination)
 Vue.config.productionTip = false
+// 全局自定义指令
+// import hasBtn from '@/directive/btnPermission.js'
+// Vue.directive('hasBtn', hasBtn)
 new Vue({
   router,
   store,

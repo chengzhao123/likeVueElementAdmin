@@ -3,7 +3,7 @@
     <div class="actions-container">
       <el-input v-model="userSearch" placeholder="请输入用户名" size="small" style="width: 240px; margin-right: 10px;"></el-input>
       <el-button type="primary" size="small" icon="el-icon-search" @click="handelFilter">搜索</el-button>
-      <el-button type="primary" size="small" icon="el-icon-plus" @click="handleAddDialog">新增</el-button>
+      <el-button type="primary" size="small" icon="el-icon-plus" @click="handleAddDialog" v-hasBtn="'add'">新增</el-button>
     </div>
     <el-table v-loading="listLoading" :data="infoData" border fit stripe>
       <el-table-column align="center" label="序号" width="80">
@@ -79,8 +79,14 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 import { RegExpEmail, RegExpTel } from '@/utils/validator.js'
+//局部自定义指令
+import hasBtn from '@/directive/btnPermission.js'
 export default {
   name: 'UserList',
+  //局部自定义指令
+  directives: {
+    hasBtn
+  },
   data() {
     let validatorEmail = (rule, value, callback) => {
       if (value == '') {
